@@ -13,8 +13,6 @@ class GeneradorCheque
     cheque
   end
 
-
-
   def imprimir_cheque(cheque)
     if(@fecha_de_ejecucion.next_day.day!=1)
       @consola.imprimir("No se pudo imprimir el cheque, porque aun no es fin de mes")

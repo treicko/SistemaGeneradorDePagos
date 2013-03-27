@@ -51,7 +51,7 @@ class Empleado
   end
 
   def prorratear_salario(fecha_ejecucion)
-    dias_trabajados =(fecha_ejecucion.mjd - obtener_fecha_inicio_contrato.mjd) + 1
+    dias_trabajados = (fecha_ejecucion.mjd - obtener_fecha_inicio_contrato.mjd) + 1
     fact_salario = obtener_salario / (Date.civil(fecha_ejecucion.year, fecha_ejecucion.month, -1)).day.to_f
     monto_correspondiente = fact_salario * dias_trabajados
     con_salario_fijo(monto_correspondiente)

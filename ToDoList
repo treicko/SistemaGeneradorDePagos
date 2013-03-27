@@ -1,1 +1,3 @@
--Revisar el prorratear salario de empleado
+-Revisar la claridad del metodo prorratear salario de empleado
+-Verificar la responsabilidad de crear IU en generadorCheque, consola
+-El empleado tiene algunos datos requeridos para su creacion
