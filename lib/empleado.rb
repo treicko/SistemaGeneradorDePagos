@@ -4,7 +4,7 @@ class Empleado
   def initialize(fecha_inicio_contrato)
     @fecha_inicio_contrato = fecha_inicio_contrato
   end
-  def con_salario_fijo(monto)
+  def asignar_salario_fijo(monto)
      @salario = monto
   end
 
@@ -44,17 +44,28 @@ class Empleado
     @fecha_inicio_contrato
   end
 
-  def generar_salario(fecha_ejecucion)
+  def calcular_salario(fecha_ejecucion)
     if (ha_sido_contratado_este_mes?(fecha_ejecucion))
-      prorratear_salario(fecha_ejecucion)
+          calcular_salario_prorrateado(fecha_ejecucion)
+    else
+      @salario
     end
   end
 
-  def prorratear_salario(fecha_ejecucion)
-    dias_trabajados = (fecha_ejecucion.mjd - obtener_fecha_inicio_contrato.mjd) + 1
+  def calcular_salario_prorrateado(fecha_ejecucion)
+    dias_trabajados = calcular_dias_trabajados_hasta(fecha_ejecucion)
+    salario_diario = obtener_salario_diario(fecha_ejecucion)
+    salario_diario * dias_trabajados
+  end
+
+  private
+
+  def obtener_salario_diario(fecha_ejecucion)
     fact_salario = obtener_salario / (Date.civil(fecha_ejecucion.year, fecha_ejecucion.month, -1)).day.to_f
-    monto_correspondiente = fact_salario * dias_trabajados
-    con_salario_fijo(monto_correspondiente)
+  end
+
+  def calcular_dias_trabajados_hasta(fecha_ejecucion)
+    dias_trabajados = (fecha_ejecucion.mjd - obtener_fecha_inicio_contrato.mjd) + 1
   end
 
   def ha_sido_contratado_este_mes?(fecha_ejecucion)

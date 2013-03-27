@@ -7,7 +7,7 @@ class Cheque
   end
 
   def obtener_monto()
-    @empleado.obtener_salario()
+    @monto
   end
 
   def obtener_nombre_empleado()
@@ -24,5 +24,8 @@ class Cheque
 
   def obtener_fecha_emision()
     Date.today
+  end
+  def asignar_monto(monto)
+      @monto=monto
   end
 end

@@ -10,14 +10,14 @@ describe "Generar cheque para empleado con salario fijo" do
   subject(:empleado) {Empleado.new(Date.new(2012,1,1))}
 
   it "deberia generar cheque para un empleado" do
-    empleado.con_salario_fijo(300)
+    empleado.asignar_salario_fijo(300)
     generador = GeneradorCheque.new(Date.new(2013,1,1))
     cheque = generador.ejecutar(empleado)
     cheque.obtener_monto.should == 300
   end
 
   it "deberia generar cheque para otro empleado(salario 500)" do
-    empleado.con_salario_fijo(500)
+    empleado.asignar_salario_fijo(500)
     generador = GeneradorCheque.new(Date.new(2013,1,1))
     cheque = generador.ejecutar(empleado)
     cheque.obtener_monto.should == 500
@@ -34,7 +34,7 @@ describe "Generar cheque para empleado con salario fijo" do
   end
 
   it "deberia generar cheque con salario completo para un empleado que se contrato el primero del mes" do
-    empleado.con_salario_fijo(500)
+    empleado.asignar_salario_fijo(500)
     empleado.asignar_fecha_inicio_contrato(Date.new(2013,4,1))
     generador = GeneradorCheque.new(Date.new(2013,4,30))
     cheque = generador.ejecutar(empleado)
@@ -42,7 +42,7 @@ describe "Generar cheque para empleado con salario fijo" do
   end
 
   it "deberia generar cheque con mitad de salario para un empleado que se contrato a mitad del mes" do
-    empleado.con_salario_fijo(500)
+    empleado.asignar_salario_fijo(500)
     empleado.asignar_fecha_inicio_contrato(Date.new(2013,4,16))
     generador = GeneradorCheque.new(Date.new(2013,4,30))
     cheque = generador.ejecutar(empleado)
@@ -104,7 +104,7 @@ describe "Generar cheque para empleado con salario fijo" do
   it "generar (imprimiendo) cheque si es ultimo dia del mes, para un empleado" do
     consola = ConsolaTest.new
     generador = GeneradorCheque.new(Date.new(2013,12,31), consola)
-    empleado.con_salario_fijo(2000)
+    empleado.asignar_salario_fijo(2000)
     empleado.con_nombre('pedro')
     empleado.con_apellido('mamani')
     empleado.con_ci('123456')
@@ -116,7 +116,7 @@ describe "Generar cheque para empleado con salario fijo" do
   it "generar (imprimiendo) cheque si es ultimo dia del mes, para cualquier empleado" do
     consola = ConsolaTest.new
     generador = GeneradorCheque.new(Date.new(2013,12,31), consola)
-    empleado.con_salario_fijo(1000)
+    empleado.asignar_salario_fijo(1000)
     empleado.con_nombre('juan')
     empleado.con_apellido('perez')
     empleado.con_ci('654321')
