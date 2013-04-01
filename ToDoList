@@ -1,10 +1,15 @@
 
 [ok]Revisar la claridad del metodo prorratear salario de empleado
 [ok] Corregir error se actualiza el salario del empleado al prorrateado
-- Añadir un spec que demuestre este error
+* El empleado tiene algunos datos requeridos para su creacion:
+   nombre, apellido, ci, fecha_contrato
+-borrar dos tests de set get
 - Analizar y corregir acoplamiento de cheque con empleado
-- El empleado tiene algunos datos requeridos para su creacion
-- Realizar la verificacion de que solo se les paga a fin de mes
-- Verificar specs, claridad, mantenibilidad
 - Verificar la responsabilidad de crear IU en generadorCheque, consola
 - Aplicar descuentos del sindicato
+
+
+
+- Añadir un spec que demuestre este error
+- Realizar la verificacion de que solo se les paga a fin de mes
+- Verificar specs, claridad, mantenibilidad

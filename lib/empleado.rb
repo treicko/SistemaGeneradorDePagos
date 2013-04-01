@@ -1,9 +1,13 @@
 require('date')
 
 class Empleado
-  def initialize(fecha_inicio_contrato)
+  def initialize(ci, nombre, apellido, fecha_inicio_contrato)
+    @ci = ci
+    @nombre = nombre
+    @apellido = apellido
     @fecha_inicio_contrato = fecha_inicio_contrato
   end
+
   def asignar_salario_fijo(monto)
      @salario = monto
   end
@@ -12,24 +16,12 @@ class Empleado
     @salario
   end
 
-  def con_nombre(nombre)
-    @nombre = nombre
-  end
-
   def obtener_nombre()
     @nombre
   end
 
-  def con_apellido(apellido)
-    @apellido = apellido
-  end
-
   def obtener_apellido()
     @apellido
-  end
-
-  def con_ci(ci)
-    @ci = ci
   end
 
   def obtener_ci()
