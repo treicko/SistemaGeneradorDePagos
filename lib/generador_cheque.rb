@@ -8,7 +8,10 @@ class GeneradorCheque
 
   def ejecutar(empleado)
     beneficiario = empleado.obtener_nombre() + " " + empleado.obtener_apellido()
-    cheque = Cheque.new(empleado.obtener_ci(), beneficiario, empleado.obtener_salario())
+    cheque = Cheque.new(empleado.obtener_ci(),
+                        beneficiario,
+                        @fecha_de_ejecucion,
+                        empleado.obtener_salario())
     cheque.asignar_monto(empleado.calcular_salario(@fecha_de_ejecucion))
     cheque
   end

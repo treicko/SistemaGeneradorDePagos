@@ -23,16 +23,6 @@ describe "Generar cheque para empleado con salario fijo" do
     cheque.obtener_monto.should == 500
   end
 
-  it "deberia asignar una fecha de contratacion a un empleado" do
-    empleado.asignar_fecha_inicio_contrato(Date.new(2013,1,1))
-    empleado.obtener_fecha_inicio_contrato.should == Date.new(2013,1,1)
-  end
-
-  it "deberia asignar una fecha de contratacion a cualquier empleado" do
-    empleado.asignar_fecha_inicio_contrato(Date.new(2012,1,1))
-    empleado.obtener_fecha_inicio_contrato.should == Date.new(2012,1,1)
-  end
-
   it "deberia generar cheque con salario completo para un empleado que se contrato el primero del mes" do
     empleado.asignar_salario_fijo(500)
     empleado.asignar_fecha_inicio_contrato(Date.new(2013,4,1))

@@ -2,10 +2,11 @@ require ('date')
 
 class Cheque
 
-  def initialize(ci, beneficiario, monto)
+  def initialize(ci, beneficiario, fecha_emision, monto)
     @ci = ci
     @beneficiario = beneficiario
     @monto = monto
+    @fecha_emision = fecha_emision
   end
 
   def obtener_monto()
@@ -21,7 +22,7 @@ class Cheque
   end
 
   def obtener_fecha_emision()
-    Date.today
+    @fecha_emision
   end
 
   def asignar_monto(monto)
