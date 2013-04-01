@@ -3,8 +3,9 @@
 [ok] Corregir error se actualiza el salario del empleado al prorrateado
 * El empleado tiene algunos datos requeridos para su creacion:
    nombre, apellido, ci, fecha_contrato
--borrar dos tests de set get
-- Analizar y corregir acoplamiento de cheque con empleado
+    -borrar dos tests de set get
+    - Analizar y corregir acoplamiento de cheque con empleado
+        -revisar ejecutar de generador
 - Verificar la responsabilidad de crear IU en generadorCheque, consola
 - Aplicar descuentos del sindicato
 
