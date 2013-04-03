@@ -12,7 +12,7 @@ class GeneradorCheque
                         beneficiario,
                         @fecha_de_ejecucion,
                         empleado.obtener_salario())
-    cheque.asignar_monto(empleado.calcular_salario(@fecha_de_ejecucion))
+    cheque.monto = empleado.calcular_salario(@fecha_de_ejecucion)
     cheque
   end
 
@@ -20,7 +20,7 @@ class GeneradorCheque
     if(@fecha_de_ejecucion.next_day.day!=1)
       @consola.imprimir("No se pudo imprimir el cheque, porque aun no es fin de mes")
     else
-      @consola.imprimir("Nombre completo: #{cheque.obtener_beneficiario}\nCi: #{cheque.obtener_ci()}\nMonto a cobrar: #{cheque.obtener_monto()}$\nFecha emision:"+Date.today.to_s+"\nFirma:___________________________")
+      @consola.imprimir("Nombre completo: #{cheque.beneficiario}\nCi: #{cheque.ci}\nMonto a cobrar: #{cheque.monto}$\nFecha emision:"+Date.today.to_s+"\nFirma:___________________________")
     end
   end
 

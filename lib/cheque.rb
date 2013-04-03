@@ -1,6 +1,8 @@
 require ('date')
 
 class Cheque
+  attr_accessor :monto
+  attr_reader :beneficiario, :ci, :fecha_emision
 
   def initialize(ci, beneficiario, fecha_emision, monto)
     @ci = ci
@@ -9,23 +11,4 @@ class Cheque
     @fecha_emision = fecha_emision
   end
 
-  def obtener_monto()
-    @monto
-  end
-
-  def obtener_beneficiario()
-    @beneficiario
-  end
-
-  def obtener_ci()
-    @ci
-  end
-
-  def obtener_fecha_emision()
-    @fecha_emision
-  end
-
-  def asignar_monto(monto)
-      @monto=monto
-  end
 end

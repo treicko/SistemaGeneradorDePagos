@@ -13,14 +13,14 @@ describe "Generar cheque para empleado con salario fijo" do
     empleado.asignar_salario_fijo(300)
     generador = GeneradorCheque.new(Date.new(2013,1,1))
     cheque = generador.ejecutar(empleado)
-    cheque.obtener_monto.should == 300
+    cheque.monto.should == 300
   end
 
   it "deberia generar cheque para otro empleado(salario 500)" do
     empleado.asignar_salario_fijo(500)
     generador = GeneradorCheque.new(Date.new(2013,1,1))
     cheque = generador.ejecutar(empleado)
-    cheque.obtener_monto.should == 500
+    cheque.monto.should == 500
   end
 
   it "deberia generar cheque con salario completo para un empleado que se contrato el primero del mes" do
@@ -28,7 +28,7 @@ describe "Generar cheque para empleado con salario fijo" do
     empleado.asignar_fecha_inicio_contrato(Date.new(2013,4,1))
     generador = GeneradorCheque.new(Date.new(2013,4,30))
     cheque = generador.ejecutar(empleado)
-    cheque.obtener_monto.to_i.should == 500
+    cheque.monto.to_i.should == 500
   end
 
   it "deberia generar cheque con mitad de salario para un empleado que se contrato a mitad del mes" do
@@ -36,31 +36,31 @@ describe "Generar cheque para empleado con salario fijo" do
     empleado.asignar_fecha_inicio_contrato(Date.new(2013,4,16))
     generador = GeneradorCheque.new(Date.new(2013,4,30))
     cheque = generador.ejecutar(empleado)
-    cheque.obtener_monto.to_i.should == 250
+    cheque.monto.to_i.should == 250
   end
 
   it "el cheque generado deberia corresponder al empleado" do
     generador = GeneradorCheque.new
     cheque = generador.ejecutar(empleado)
-    cheque.obtener_beneficiario.should == "Juan Perez"
+    cheque.beneficiario.should == "Juan Perez"
   end
 
   it "el cheque generado para empleado deberia tener su carnet" do
     generador = GeneradorCheque.new
     cheque = generador.ejecutar(empleado)
-    cheque.obtener_ci.should == "3343"
+    cheque.ci.should == "3343"
   end
 
   it "el cheque generado para empleado deberia tener una fecha de emision al momento de generarse" do
     generador = GeneradorCheque.new
     cheque = generador.ejecutar(empleado)
-    cheque.obtener_fecha_emision.should == Date.today
+    cheque.fecha_emision.should == Date.today
   end
 
   it "el cheque generado para empleado deberia tener una fecha de emision al momento de generarse, y no otra fecha" do
     generador = GeneradorCheque.new
     cheque = generador.ejecutar(empleado)
-    cheque.obtener_fecha_emision.should_not == Date.today.next_day
+    cheque.fecha_emision.should_not == Date.today.next_day
   end
 
 
