@@ -1,6 +1,8 @@
 require('date')
 
 class Empleado
+  attr_reader :nombre, :apellido, :ci
+
   def initialize(ci, nombre, apellido, fecha_inicio_contrato)
     @ci = ci
     @nombre = nombre
@@ -12,28 +14,8 @@ class Empleado
      @salario = monto
   end
 
-  def obtener_salario()
-    @salario
-  end
-
-  def obtener_nombre()
-    @nombre
-  end
-
-  def obtener_apellido()
-    @apellido
-  end
-
-  def obtener_ci()
-    @ci
-  end
-
   def asignar_fecha_inicio_contrato(fecha)
     @fecha_inicio_contrato = fecha
-  end
-
-  def obtener_fecha_inicio_contrato()
-    @fecha_inicio_contrato
   end
 
   def calcular_salario(fecha_ejecucion)
@@ -53,16 +35,16 @@ class Empleado
   private
 
   def calcular_salario_diario(fecha_ejecucion)
-    fact_salario = obtener_salario / (Date.civil(fecha_ejecucion.year, fecha_ejecucion.month, -1)).day.to_f
+    fact_salario = @salario / (Date.civil(fecha_ejecucion.year, fecha_ejecucion.month, -1)).day.to_f
   end
 
   def calcular_dias_trabajados_hasta(fecha_ejecucion)
-    dias_trabajados = (fecha_ejecucion.mjd - obtener_fecha_inicio_contrato.mjd) + 1
+    dias_trabajados = (fecha_ejecucion.mjd - @fecha_inicio_contrato.mjd) + 1
   end
 
   def ha_sido_contratado_este_mes?(fecha_ejecucion)
-    obtener_fecha_inicio_contrato.month==fecha_ejecucion.month &&
-        obtener_fecha_inicio_contrato.year==fecha_ejecucion.year
+    @fecha_inicio_contrato.month==fecha_ejecucion.month &&
+        @fecha_inicio_contrato.year==fecha_ejecucion.year
   end
 
 end

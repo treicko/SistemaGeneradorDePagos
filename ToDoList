@@ -1,21 +1,22 @@
 
 [ok]Revisar la claridad del metodo prorratear salario de empleado
 [ok] Corregir error se actualiza el salario del empleado al prorrateado
+-???PENDING Añadir un spec que demuestre este error
+
 [ok 20130401] El empleado tiene algunos datos requeridos para su creacion:
    [ok]nombre, apellido, ci, fecha_contrato
     [ok]borrar dos tests de set get
 [ok]Analizar y corregir acoplamiento de cheque con empleado
     - revisar ejecutar de generador
-- Verificar la responsabilidad de crear IU en generadorCheque, consola
+[ok] Verificar la responsabilidad de crear IU en generadorCheque, consola
 
-- se puede simplificar set y gets de empleado usando attr_reader?
+[ok]se puede simplificar set y gets de empleado usando attr_reader?
+
+- Realizar la verificacion de que solo se les paga a fin de mes
+- Verificar specs, claridad, mantenibilidad
 
 - Aplicar descuentos del sindicato
     - Descuento fijo
     - Descuento variable por servicios ofrecidos
 
--
 
-- Añadir un spec que demuestre este error
-- Realizar la verificacion de que solo se les paga a fin de mes
-- Verificar specs, claridad, mantenibilidad
