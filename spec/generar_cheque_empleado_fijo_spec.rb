@@ -68,7 +68,7 @@ describe "Generar cheque para empleado con salario fijo" do
     consola = ConsolaTest.new
     generador = GeneradorCheque.new(Date.new(2013,12,12), consola)
     cheque = generador.ejecutar(empleado)
-    generador.imprimir_cheque(cheque)
+    consola.imprimir_cheque(cheque)
     consola.buffer_pantalla.should == "No se pudo imprimir el cheque, porque aun no es fin de mes"
   end
 
@@ -78,7 +78,7 @@ describe "Generar cheque para empleado con salario fijo" do
     empleado = Empleado.new('123456', 'pedro', 'mamani',Date.new(2013,11,01))
     empleado.asignar_salario_fijo(2000)
     cheque = generador.ejecutar(empleado)
-    generador.imprimir_cheque(cheque)
+    consola.imprimir_cheque(cheque)
     consola.buffer_pantalla.should == "Nombre completo: pedro mamani\nCi: 123456\nMonto a cobrar: 2000$\nFecha emision:"+Date.today.to_s+"\nFirma:___________________________"
   end
 

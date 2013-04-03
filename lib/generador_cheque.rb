@@ -16,13 +16,4 @@ class GeneradorCheque
                         monto)
     cheque
   end
-
-  def imprimir_cheque(cheque)
-    if(@fecha_de_ejecucion.next_day.day!=1)
-      @consola.imprimir("No se pudo imprimir el cheque, porque aun no es fin de mes")
-    else
-      @consola.imprimir("Nombre completo: #{cheque.beneficiario}\nCi: #{cheque.ci}\nMonto a cobrar: #{cheque.monto}$\nFecha emision:"+Date.today.to_s+"\nFirma:___________________________")
-    end
-  end
-
 end
