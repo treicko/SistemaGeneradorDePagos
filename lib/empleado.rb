@@ -46,13 +46,13 @@ class Empleado
 
   def calcular_salario_prorrateado(fecha_ejecucion)
     dias_trabajados = calcular_dias_trabajados_hasta(fecha_ejecucion)
-    salario_diario = obtener_salario_diario(fecha_ejecucion)
+    salario_diario = calcular_salario_diario(fecha_ejecucion)
     salario_diario * dias_trabajados
   end
 
   private
 
-  def obtener_salario_diario(fecha_ejecucion)
+  def calcular_salario_diario(fecha_ejecucion)
     fact_salario = obtener_salario / (Date.civil(fecha_ejecucion.year, fecha_ejecucion.month, -1)).day.to_f
   end
 

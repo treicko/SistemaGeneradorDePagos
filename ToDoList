@@ -5,10 +5,11 @@
    [ok]nombre, apellido, ci, fecha_contrato
     [ok]borrar dos tests de set get
 [ok]Analizar y corregir acoplamiento de cheque con empleado
-    * revisar ejecutar de generador
+    - revisar ejecutar de generador
+- Verificar la responsabilidad de crear IU en generadorCheque, consola
+
 - se puede simplificar set y gets de empleado usando attr_reader?
 
-- Verificar la responsabilidad de crear IU en generadorCheque, consola
 - Aplicar descuentos del sindicato
     - Descuento fijo
     - Descuento variable por servicios ofrecidos
