@@ -11,14 +11,14 @@ describe "Generar cheque para empleado con salario fijo" do
 
   it "deberia generar cheque para un empleado" do
     empleado.asignar_salario_fijo(300)
-    generador = GeneradorCheque.new(Date.new(2013,1,1))
+    generador = GeneradorCheque.new(Date.new(2013,1,31))
     cheque = generador.ejecutar(empleado)
     cheque.monto.should == 300
   end
 
   it "deberia generar cheque para otro empleado(salario 500)" do
     empleado.asignar_salario_fijo(500)
-    generador = GeneradorCheque.new(Date.new(2013,1,1))
+    generador = GeneradorCheque.new(Date.new(2013,1,31))
     cheque = generador.ejecutar(empleado)
     cheque.monto.should == 500
   end
@@ -40,25 +40,25 @@ describe "Generar cheque para empleado con salario fijo" do
   end
 
   it "el cheque generado deberia corresponder al empleado" do
-    generador = GeneradorCheque.new
+    generador = GeneradorCheque.new(Date.new(2013,4,30))
     cheque = generador.ejecutar(empleado)
     cheque.beneficiario.should == "Juan Perez"
   end
 
   it "el cheque generado para empleado deberia tener su carnet" do
-    generador = GeneradorCheque.new
+    generador = GeneradorCheque.new(Date.new(2013,4,30))
     cheque = generador.ejecutar(empleado)
     cheque.ci.should == "3343"
   end
 
   it "el cheque generado para empleado deberia tener una fecha de emision al momento de generarse" do
-    generador = GeneradorCheque.new
+    generador = GeneradorCheque.new(Date.new(2013,4,30))
     cheque = generador.ejecutar(empleado)
-    cheque.fecha_emision.should == Date.today
+    cheque.fecha_emision.should == (Date.new(2013,4,30))
   end
 
   it "el cheque generado para empleado deberia tener una fecha de emision al momento de generarse, y no otra fecha" do
-    generador = GeneradorCheque.new
+    generador = GeneradorCheque.new(Date.new(2013,4,30))
     cheque = generador.ejecutar(empleado)
     cheque.fecha_emision.should_not == Date.today.next_day
   end
@@ -76,6 +76,11 @@ describe "Generar cheque para empleado con salario fijo" do
     cheque = Cheque.new('123456', 'Pedro Mamani', Date.new(2013,12,31), 2000)
     consola.imprimir_cheque(cheque)
     consola.buffer_pantalla.should == "Nombre completo: Pedro Mamani\nCi: 123456\nMonto a cobrar: 2000$\nFecha emision:"+Date.today.to_s+"\nFirma:___________________________"
+  end
+  it "si no es fin de mes no deberia generar el cheque"do
+    generador=GeneradorCheque.new(Date.new(2013,4,9))
+    cheque=generador.ejecutar(empleado)
+    cheque.should==nil
   end
 
 end
