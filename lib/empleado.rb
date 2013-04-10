@@ -2,12 +2,13 @@ require('date')
 
 class Empleado
   attr_reader :nombre, :apellido, :ci
-
   def initialize(ci, nombre, apellido, fecha_inicio_contrato)
     @ci = ci
     @nombre = nombre
     @apellido = apellido
     @fecha_inicio_contrato = fecha_inicio_contrato
+
+    @descuento_fijo_por_sindicato = 0
   end
 
   def asignar_salario_fijo(monto)
@@ -20,9 +21,9 @@ class Empleado
 
   def calcular_salario(fecha_ejecucion)
     if (ha_sido_contratado_este_mes?(fecha_ejecucion))
-          calcular_salario_prorrateado(fecha_ejecucion)
+          calcular_salario_prorrateado(fecha_ejecucion)-@descuento_fijo_por_sindicato
     else
-      @salario
+      @salario - @descuento_fijo_por_sindicato
     end
   end
 
@@ -30,6 +31,10 @@ class Empleado
     dias_trabajados = calcular_dias_trabajados_hasta(fecha_ejecucion)
     salario_diario = calcular_salario_diario(fecha_ejecucion)
     salario_diario * dias_trabajados
+  end
+
+  def asignar_descuento_sindicato(monto)
+    @descuento_fijo_por_sindicato = monto
   end
 
   private

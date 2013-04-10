@@ -13,10 +13,11 @@
 [ok]se puede simplificar set y gets de empleado usando attr_reader?
 
 [ok] Realizar la verificacion de que solo se les paga a fin de mes
-- Verificar specs, claridad, mantenibilidad
 
 - Aplicar descuentos del sindicato
-    - Descuento fijo
+    [ok] Descuento fijo
     - Descuento variable por servicios ofrecidos
+
+- Verificar specs, claridad, mantenibilidad
 
 

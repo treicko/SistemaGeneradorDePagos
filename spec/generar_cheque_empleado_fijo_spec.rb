@@ -41,24 +41,28 @@ describe "Generar cheque para empleado con salario fijo" do
 
   it "el cheque generado deberia corresponder al empleado" do
     generador = GeneradorCheque.new(Date.new(2013,4,30))
+    empleado.asignar_salario_fijo(2000)
     cheque = generador.ejecutar(empleado)
     cheque.beneficiario.should == "Juan Perez"
   end
 
   it "el cheque generado para empleado deberia tener su carnet" do
     generador = GeneradorCheque.new(Date.new(2013,4,30))
+    empleado.asignar_salario_fijo(2000)
     cheque = generador.ejecutar(empleado)
     cheque.ci.should == "3343"
   end
 
   it "el cheque generado para empleado deberia tener una fecha de emision al momento de generarse" do
     generador = GeneradorCheque.new(Date.new(2013,4,30))
+    empleado.asignar_salario_fijo(2000)
     cheque = generador.ejecutar(empleado)
     cheque.fecha_emision.should == (Date.new(2013,4,30))
   end
 
   it "el cheque generado para empleado deberia tener una fecha de emision al momento de generarse, y no otra fecha" do
     generador = GeneradorCheque.new(Date.new(2013,4,30))
+    empleado.asignar_salario_fijo(2000)
     cheque = generador.ejecutar(empleado)
     cheque.fecha_emision.should_not == Date.today.next_day
   end
@@ -83,4 +87,12 @@ describe "Generar cheque para empleado con salario fijo" do
     cheque.should==nil
   end
 
+  it "empleado que pertenece a sindicato deberia aplicarse descuento fijo" do
+    empleado.asignar_salario_fijo(2000)
+    empleado.asignar_descuento_sindicato(200)
+    generador = GeneradorCheque.new(Date.new(2013,4,30))
+    cheque = generador.ejecutar(empleado)
+    cheque.monto.should == 1800
+
+  end
 end
