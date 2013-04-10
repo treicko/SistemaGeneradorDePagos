@@ -5,7 +5,7 @@
 
 [ok 20130401] El empleado tiene algunos datos requeridos para su creacion:
    [ok]nombre, apellido, ci, fecha_contrato
-    [ok]borrar dos tests de set get
+   [ok]borrar dos tests de set get
 [ok]Analizar y corregir acoplamiento de cheque con empleado
     - revisar ejecutar de generador
 [ok] Verificar la responsabilidad de crear IU en generadorCheque, consola
@@ -17,6 +17,15 @@
 - Aplicar descuentos del sindicato
     [ok] Descuento fijo
     - Descuento variable por servicios ofrecidos
+        - Anadir de Tarjetas de descuento por servicios al sindicato
+            (Fecha, id_Empleado, monto, descripcion,..)
+        - Aplicar los descuentos por esas tarjetas
+
+- Generar cheque para empleado por hora
+    - El empleado debe tener un pago por hora
+    - Anadir tarjeta de tiempo horario
+        (Fecha, id_empleado, hora_ingreso, hora_salida, ...)
+    - Generar el cheque cada 2 semanas los viernes
 
 - Verificar specs, claridad, mantenibilidad
 
