@@ -3,7 +3,7 @@ require ('generador_cheque')
 require ('cheque')
 require ('date')
 require('consola_test')
-
+require('tarjeta_de_servicio')
 
 describe "Generar cheque para empleado con salario fijo" do
 
@@ -93,6 +93,29 @@ describe "Generar cheque para empleado con salario fijo" do
     generador = GeneradorCheque.new(Date.new(2013,4,30))
     cheque = generador.ejecutar(empleado)
     cheque.monto.should == 1800
+  end
 
+  it "empleado que solicita un servicio de sindicato deberia aplicarse descuento" do
+    empleado.asignar_salario_fijo(2000)
+    tarjeta_servicio = TarjetaDeServicio.new(Date.new(2013,4,20),empleado.ci,100,'pulperia')
+    empleado.registrar_tarjeta_de_servicio(tarjeta_servicio)
+    generador = GeneradorCheque.new(Date.new(2013,4,30))
+    cheque = generador.ejecutar(empleado)
+    cheque.monto.should == 1900
+  end
+
+    it "empleado que solicita mas de un servicio de sindicato deberia aplicarse descuento" do
+    empleado.asignar_salario_fijo(2000)
+    tarjeta_servicio_1 = TarjetaDeServicio.new(Date.new(2013,4,20),empleado.ci,100,'pulperia')
+    tarjeta_servicio_2 = TarjetaDeServicio.new(Date.new(2013,4,21),empleado.ci,50,'pulperia')
+    tarjeta_servicio_3 = TarjetaDeServicio.new(Date.new(2013,4,22),empleado.ci,150,'pulperia')
+    tarjeta_servicio_4 = TarjetaDeServicio.new(Date.new(2013,4,23),empleado.ci,30,'pulperia')
+    empleado.registrar_tarjeta_de_servicio(tarjeta_servicio_1)
+    empleado.registrar_tarjeta_de_servicio(tarjeta_servicio_2)
+    empleado.registrar_tarjeta_de_servicio(tarjeta_servicio_3)
+    empleado.registrar_tarjeta_de_servicio(tarjeta_servicio_4)
+    generador = GeneradorCheque.new(Date.new(2013,4,30))
+    cheque = generador.ejecutar(empleado)
+    cheque.monto.should == 1670
   end
 end
