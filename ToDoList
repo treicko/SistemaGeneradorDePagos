@@ -25,7 +25,9 @@
     -[ok] El empleado debe tener un pago por hora
     -[ok] Anadir tarjeta de tiempo horario
         (Fecha, id_empleado, hora_ingreso, hora_salida, ...)
-    - Generar el cheque cada 2 semanas los viernes
+    [?] Generar el cheque cada 2 semanas los viernes
+        -Control de que se cada dos semanas, se esta generando
+        todos los viernes
 
 - Verificar specs, claridad, mantenibilidad
 
