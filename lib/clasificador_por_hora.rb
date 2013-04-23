@@ -7,10 +7,6 @@ class ClasificadorPorHora
   end
 
   def calcular_salario(fecha_ejecucion)
-    calcular_salario_con_tarjetas_de_tiempo()
-  end
-
-  def calcular_salario_con_tarjetas_de_tiempo()
     @total_horas_trabajadas = 0
     @tarjetas_de_tiempo.each { |t| @total_horas_trabajadas += t.calcular_horas_trabajadas }
     @total_horas_trabajadas * @monto_por_hora
