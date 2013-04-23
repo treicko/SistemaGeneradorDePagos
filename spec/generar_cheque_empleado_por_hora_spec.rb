@@ -18,7 +18,7 @@ describe "Generar cheque para empleado por hora" do
 		tarjeta_de_tiempo = TarjetaDeTiempo.new(Date.new(2013,4,12),empleado.ci,Time.new(2013,4,12,8,0,0),Time.new(2013,4,12,20,0,0))
 		empleado.registrar_tarjeta_de_tiempo(tarjeta_de_tiempo)
 		generador = GeneradorCheque.new(Date.new(2013,4,12))
-		cheque = generador.ejecutar_cheque_empleado_por_hora(empleado)
+		cheque = generador.ejecutar(empleado)
 		cheque.monto.should == 600
 	end
 
@@ -30,7 +30,7 @@ describe "Generar cheque para empleado por hora" do
 		empleado.registrar_tarjeta_de_tiempo(tarjeta_de_tiempo_2)
 		empleado.registrar_tarjeta_de_tiempo(tarjeta_de_tiempo_3)
 		generador = GeneradorCheque.new(Date.new(2013,4,19))
-		cheque = generador.ejecutar_cheque_empleado_por_hora(empleado)
+		cheque = generador.ejecutar(empleado)
 		cheque.monto.should == 1150
 	end
 
@@ -39,7 +39,7 @@ describe "Generar cheque para empleado por hora" do
 		tarjeta_de_tiempo = TarjetaDeTiempo.new(Date.new(2013,4,12),empleado.ci,Time.new(2013,4,12,8,0,0),Time.new(2013,4,12,20,0,0))
 		empleado.registrar_tarjeta_de_tiempo(tarjeta_de_tiempo)
 		generador = GeneradorCheque.new(Date.new(2013,4,12))
-		cheque = generador.ejecutar_cheque_empleado_por_hora(empleado)
+		cheque = generador.ejecutar(empleado)
 		cheque.monto.should == 500
 	end
 
@@ -47,7 +47,7 @@ describe "Generar cheque para empleado por hora" do
 		tarjeta_de_tiempo = TarjetaDeTiempo.new(Date.new(2013,4,12),empleado.ci,Time.new(2013,4,12,8,0,0),Time.new(2013,4,12,20,0,0))
 		empleado.registrar_tarjeta_de_tiempo(tarjeta_de_tiempo)
 		generador = GeneradorCheque.new(Date.new(2013,4,14))
-		cheque = generador.ejecutar_cheque_empleado_por_hora(empleado)
+		cheque = generador.ejecutar(empleado)
 		cheque.should == nil
 	end
 end
