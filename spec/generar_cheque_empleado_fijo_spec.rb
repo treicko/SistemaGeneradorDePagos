@@ -4,10 +4,15 @@ require ('cheque')
 require ('date')
 require('consola_test')
 require('tarjeta_de_servicio')
+require('clasificador_salario_fijo')
 
 describe "Generar cheque para empleado con salario fijo" do
 
   subject(:empleado) {Empleado.new('3343', 'Juan', 'Perez', Date.new(2012,1,1))}
+  before(:each) do
+    @clasificador = ClasificadorSalarioFijo.new(300, Date.new(2012,1,1))
+    empleado.clasificador_salario = @clasificador
+  end
 
   it "deberia generar cheque para un empleado" do
     empleado.asignar_salario_fijo(300)
