@@ -1,8 +1,6 @@
 require ('empleado')
 require ('generador_cheque')
 require ('cheque')
-require ('date')
-require('consola_test')
 require('tarjeta_de_tiempo')
 require('clasificador_por_hora')
 
@@ -12,7 +10,6 @@ describe "Generar cheque para empleado por hora" do
     empleado.clasificador_salario = ClasificadorPorHora.new(50)
     empleado.asignar_pago_por_hora(50)
   }
-
 
 	it "deberia generar cheque para un empleado con solo una tarjeta de tiempo" do
 		tarjeta_de_tiempo = TarjetaDeTiempo.new(Date.new(2013,4,12),empleado.ci,Time.new(2013,4,12,8,0,0),Time.new(2013,4,12,20,0,0))
@@ -34,7 +31,7 @@ describe "Generar cheque para empleado por hora" do
 		cheque.monto.should == 1150
 	end
 
-	it "empleado que pertenece a sindicato deberia aplicarse descuento" do
+	it "deberia aplicar descuento para empleado que pertenece a sindicato" do
 		empleado.asignar_descuento_sindicato(100)
 		tarjeta_de_tiempo = TarjetaDeTiempo.new(Date.new(2013,4,12),empleado.ci,Time.new(2013,4,12,8,0,0),Time.new(2013,4,12,20,0,0))
 		empleado.registrar_tarjeta_de_tiempo(tarjeta_de_tiempo)
