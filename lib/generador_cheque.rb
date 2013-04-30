@@ -4,7 +4,7 @@ class GeneradorCheque
   end
 
   def ejecutar(empleado)
-    if(fecha_ejecucion_es_ultimo_dia_mes?) ||  dia_actual_es_viernes?
+    if(empleado.es_dia_pago?(@fecha_de_ejecucion))
       beneficiario = empleado.nombre+ " " +empleado.apellido
       monto = empleado.calcular_salario(@fecha_de_ejecucion)
 
@@ -17,13 +17,4 @@ class GeneradorCheque
       nil
     end
   end
-
-  def fecha_ejecucion_es_ultimo_dia_mes?
-    return (@fecha_de_ejecucion.next_day.day==1)
-  end
-
-  def dia_actual_es_viernes?
-    @fecha_de_ejecucion.strftime("%A") == "Friday"
-  end
-
 end

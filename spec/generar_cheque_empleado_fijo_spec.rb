@@ -3,10 +3,11 @@ require ('generador_cheque')
 require ('cheque')
 require('tarjeta_de_servicio')
 require('clasificador_salario_fijo')
+require ('contrato_mensual')
 
 describe "Generar cheque para empleado con salario fijo" do
 
-  subject(:empleado) {Empleado.new('3343', 'Juan', 'Perez', Date.new(2012,1,1))}
+  subject(:empleado) {Empleado.new('3343', 'Juan', 'Perez', Date.new(2012,1,1),ContratoMensual.new)}
   before(:each) do
     empleado.clasificador_salario = ClasificadorSalarioFijo.new(300, Date.new(2012,1,1))
   end

@@ -1,9 +1,10 @@
 require('consola_test')
+require ('cheque')
 
 describe "Consola" do
   it "Imprime mensaje si no es ultimo dia del mes" do
     consola = ConsolaTest.new
-    cheque = Cheque.new('3343', 'Juan Perez', Date.new(2013,12,12), 300)
+    cheque = Cheque.new('3343', 'Juan Perez', Date.new(2013,12,12),300)
     consola.imprimir_cheque(cheque)
     consola.buffer_pantalla.should == "No se pudo imprimir el cheque, porque aun no es fin de mes"
   end
