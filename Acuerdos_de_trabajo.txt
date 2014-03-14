@@ -1,6 +1,4 @@
-- La entrega de tareas se realiza hasta 15 luego de iniciada la clase
-- Debemos marcar con OK en el todolist las tareas que implementaste
-
+- Debemos marcar con OK en el archivo ToDoList las tareas que implementaste
 
 Versiones:
   - Ruby 1.9.3
