@@ -2,7 +2,7 @@ ToDO
 -------------
 - Entender la logica de negocio del sistemageneradorpagos (Diagrama de clases UML)
 - Anadir framework sinatra para la UI
-- Crear una UI muy simple usando sintra (Index donde se muestre la lista de empleados, crear empleados)
+- Crear una UI muy simple usando sintra (Index donde se muestre la lista de empleados, los empleados se crearan solo en memoria, objetos empleado, nada todavia con base de datos)
 - Persitir la información de empleados en la BD
 - Crear una maquina virtual con todo las tecnilogias y gemas necesarias para el proyecto
 - Anadir la nueva funcionalidad al proyecto
