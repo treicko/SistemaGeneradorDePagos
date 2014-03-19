@@ -7,6 +7,12 @@
 	  <th>Nombre</th>
 	  <th>Apellido</th>
 	</tr>
-	<tr>
-	</tr>
+
+	<% @empleados.each do |empleado| %>
+	  <tr>
+	    <td><%= empleado.ci %></td>
+	    <td><%= empleado.nombre %></td>
+	    <td><%= empleado.apellido %></td>
+	  </tr>
+	<% end %>
 </table>

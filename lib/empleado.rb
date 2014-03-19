@@ -17,18 +17,6 @@ class Empleado
     @clasificador_contrato=clasificador_contrato
   end
 
-  def initialize()
-    @ci = 1234567
-    @nombre = "nombre"
-    @apellido = "apellido"
-    @fecha_inicio_contrato = Date.now
-
-    @descuento_fijo_por_sindicato = 0
-    @tarjetas_de_servicio = Array.new
-    @descuento_por_servicios = 0
-    @clasificador_contrato= ContratoMensual.new
-  end
-
   def es_dia_pago?(fecha)
     @clasificador_contrato.es_dia_pago?(fecha)
   end
