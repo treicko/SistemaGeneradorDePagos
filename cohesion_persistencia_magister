@@ -1,0 +1,33 @@
+$empleados_gestor = Empleaos.new
+
+get '/' do
+	@empleados = $empleados_gestor.obtenerTodos
+	erb: index
+end
+
+# git dif app.rb => esto me muestra los cambios que hice en ese archivo.
+
+get '/crear_empleado' do
+	empleado = Empleado.crear_empleado(params[:empleado][:ci]
+									   params[:empleado][:nombre]
+									   params[:empleado][:apellido]
+									   params[:empleado][:tipoContrato]
+										)
+	$empleados_gesto.adicionar(empleado)
+	@empleados = $empleados_gestor.obtenerTodos
+	erb: index
+end
+
+
+-------------------------------------------------
+#params[:empleado][:salario]
+
+def self.crear_empleado(todos los parametros... esto es un contructor estatico)
+
+def
+
+se usa patron de disenio.... factory method
+
+tarea... leer todos los patrones de factoria, creacion de familia de objetos. // crear en la clase
+que corresponde, un metodo que se encarge de la creacion.
+

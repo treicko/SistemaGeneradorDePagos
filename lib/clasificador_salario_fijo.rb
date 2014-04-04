@@ -34,5 +34,8 @@ class ClasificadorSalarioFijo
         @fecha_inicio_contrato.year==fecha_ejecucion.year
   end
 
+  def salario_fijo?
+    true
+  end
 
 end

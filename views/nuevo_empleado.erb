@@ -1,0 +1,81 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="page-header">
+        <h1 id="forms">Registrar Empleado</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-4 col-lg-offset-1">
+        <form class="bs-component" action="/empleados/crear_empleado" method="post">
+          
+          <div class="form-group">
+            <label class="control-label" for="empleado_ci">Ci:</label>
+            <input type="text" class="form-control" id="empleado_ci" name="empleado_ci" required>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="empleado_nombre">Nombre:</label>
+            <input type="text" class="form-control" id="empleado_nombre" name="empleado_nombre" required>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="empleado_apellido">Apellido:</label>
+            <input type="text" class="form-control" id="empleado_apellido" name="empleado_apellido" required>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="inputDefault">Contratado en: </label>
+            <input type="date" class="form-control" id="fecha_de_contrato" name="fecha_de_contrato">
+          </div>
+
+          <div class="form-group">
+            <label class="col-lg-5 control-label">Tipo de Contrato:</label>
+            <div class="col-lg-7">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="tipo_de_contrato" id="tipo_contrato_mensual" value="Mensual" checked="">
+                  Mensual
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="tipo_de_contrato" id="tipo_contrato_quincenal" value="Quincenal">
+                  Quincenal
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="select" class="col-lg-5 control-label">Tipo de Salario: </label>
+            <div class="col-lg-7">
+              <select class="form-control" id="empleado_tipo_salario" name="empleado_tipo_salario">
+                <option value="Salario Fijo">Salario Fijo</option>
+                <option value="Salario Hora">Salario Por Hora</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="empleado_salario">Salario:</label>
+            <input type="number" class="form-control" id="empleado_salario" name="empleado_salario" min="10" required>
+          </div>
+
+          <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+              <br>
+              <button type="reset" class="btn btn-success">Limpiar</button>
+              <button type="submit" class="btn btn-primary">Crear empleado</button>
+            </div>
+          </div>
+
+        </form>	
+
+    </div> 
+  </div>
+
+</div>

@@ -15,4 +15,9 @@ class ClasificadorPorHora
   def registrar_tarjeta_de_tiempo(tarjeta_de_tiempo)
     @tarjetas_de_tiempo.push(tarjeta_de_tiempo)
   end
+
+  def salario_fijo?
+    false
+  end
+
 end

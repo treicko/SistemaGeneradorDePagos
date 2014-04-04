@@ -1,0 +1,83 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="page-header">
+        <h1 id="forms">Modificar empleado</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-4 col-lg-offset-1">
+        <form class="bs-component" action="/empleados/actualizar" method="post">
+          
+          <input id="empleado_ci" name="empleado_ci_antiguo" type="text" value="<%= @empleado.ci %>" hidden/>
+          <br />
+
+          <div class="form-group">
+            <label class="control-label" for="empleado_ci">Ci:</label>
+            <input type="text" class="form-control" id="empleado_ci" name="empleado_ci" value="<%= @empleado.ci %>" required>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="empleado_nombre">Nombre:</label>
+            <input type="text" class="form-control" id="empleado_nombre" name="empleado_nombre" value="<%= @empleado.nombre %>" required>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="empleado_apellido">Apellido:</label>
+            <input type="text" class="form-control" id="empleado_apellido" name="empleado_apellido" value="<%= @empleado.apellido %>" required>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="inputDefault">Contratado en: </label>
+            <input type="date" class="form-control" id="fecha_de_contrato" name="fecha_de_contrato" value="<%= @empleado.fecha_inicio_contrato %>" >
+          </div>
+
+          <div class="form-group">
+            <label class="col-lg-5 control-label">Tipo de Contrato:</label>
+            <div class="col-lg-7">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="tipo_de_contrato" id="tipo_contrato_mensual" value="Mensual" <%= 'checked' if @empleado.contrato_mensual? %>>
+                  Mensual
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="tipo_de_contrato" id="tipo_contrato_quincenal" value="Quincenal" <%= 'checked' if !@empleado.contrato_mensual? %>>
+                  Quincenal
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="select" class="col-lg-5 control-label">Tipo de Salario: </label>
+            <div class="col-lg-7">
+              <select class="form-control" id="empleado_tipo_salario" name="empleado_tipo_salario">
+                <option value="Salario Fijo" <%= 'selected' if @empleado.salario_fijo? %>>Salario Fijo</option>
+                <option value="Salario Hora" <%= 'selected' if !@empleado.salario_fijo? %>>Salario Por Hora</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="empleado_salario">Salario:</label>
+            <input type="number" class="form-control" id="empleado_salario" name="empleado_salario" min="10" value="<%= @empleado.salario %>" required>
+          </div>
+
+          <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+              <br>
+              <button type="submit" class="btn btn-success">Guardar Cambios</button>
+            </div>
+          </div>
+
+        </form> 
+
+    </div> 
+  </div>
+
+</div>

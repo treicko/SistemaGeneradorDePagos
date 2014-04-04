@@ -1,8 +1,7 @@
 require('date')
-require "./lib/contrato_mensual"
 
 class Empleado
-  attr_reader :nombre, :apellido, :ci
+  attr_reader :nombre, :apellido, :ci, :fecha_inicio_contrato, :salario
   attr_writer :clasificador_salario
 
   def initialize(ci, nombre, apellido, fecha_inicio_contrato,clasificador_contrato)
@@ -15,6 +14,16 @@ class Empleado
     @tarjetas_de_servicio = Array.new
     @descuento_por_servicios = 0
     @clasificador_contrato=clasificador_contrato
+  end
+
+  def self.crear_empleado(ci, nombre, apellido, fecha_inicio_contrato, salario, tipo_contrato, tipo_salario)
+    factoryContrato = ContratoFactory.new
+    factorySalario = SalarioFactory.new
+    contrato = factoryContrato.crear_contrato(tipo_contrato)
+    salario = factorySalario.crear_clasificador_salario(tipo_salario, salario, fecha_inicio_contrato)
+    empleado = Empleado.new(ci,nombre, apellido, fecha_inicio_contrato, contrato)
+    empleado.clasificador_salario = salario
+    return empleado
   end
 
   def es_dia_pago?(fecha)
@@ -51,6 +60,49 @@ class Empleado
   
   def registrar_tarjeta_de_tiempo(tarjeta_de_tiempo)
     @clasificador_salario.registrar_tarjeta_de_tiempo(tarjeta_de_tiempo)
+  end
+
+  def buscar_empleado_por_ci(ci_empleado, lista_empleados)
+    lista_empleados.each do |empleado|
+      if empleado.ci==ci_empleado 
+        then @resp = empleado
+             return @resp
+      end
+    end
+  end
+
+  def actualizar_empleado(ci_empleado, nuevo_empleado, lista_empleados)
+    @nueva_lista_empleados = Array.new
+    lista_empleados.each do |empleado|
+      if ci_empleado==empleado.ci
+        then @nueva_lista_empleados << nuevo_empleado
+      else
+        @nueva_lista_empleados << empleado
+      end
+    end
+    @nueva_lista_empleados
+  end
+
+  def eliminar_empleado_por_ci(ci_empleado, lista_empleados)
+    @nueva_lista_empleados = Array.new
+    lista_empleados.each do |empleado|
+      if ci_empleado!=empleado.ci
+        then @nueva_lista_empleados << empleado
+      end
+    end
+    @nueva_lista_empleados
+  end
+
+  def contrato_mensual?
+    @clasificador_contrato.contrato_mensual?
+  end
+
+  def salario_fijo?
+    if(@tipo_salario == "Salario Fijo")
+      return true
+    else
+      return false
+    end
   end
 
 end

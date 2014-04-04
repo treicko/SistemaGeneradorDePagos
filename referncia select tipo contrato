@@ -1,0 +1,4 @@
+<select id="empleado_tipo_contrato" name="empleado[tipo_contrato]">
+	<option value="mensual" <%= 'selected' if @empleado.contratomensual? %>> Mensual </option>
+	<option value="quincenal" <%= 'selected' if @empleado.quincenal? %>> Quincenal </option>
+</select>
