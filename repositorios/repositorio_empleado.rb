@@ -34,5 +34,9 @@ class RepositorioEmpleado
                                         emp
                                       end}
   end
+
+  def eliminarPorCI(ci)
+    @empleados.delete_if{|e| e.ci == ci}
+  end
   
 end

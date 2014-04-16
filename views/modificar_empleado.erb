@@ -12,12 +12,9 @@
     <div class="col-lg-4 col-lg-offset-1">
         <form class="bs-component" action="/empleados/actualizar" method="post">
           
-          <input id="empleado_ci" name="empleado_ci_antiguo" type="text" value="<%= @empleado.ci %>" hidden/>
-          <br />
-
           <div class="form-group">
             <label class="control-label" for="empleado_ci">Ci:</label>
-            <input type="text" class="form-control" id="empleado_ci" name="empleado_ci" value="<%= @empleado.ci %>" required>
+            <input type="text" class="form-control" id="empleado_ci" name="empleado_ci" value="<%= @empleado.ci %>" readonly>
           </div>
 
           <div class="form-group">
