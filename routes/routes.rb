@@ -3,24 +3,25 @@ require 'sinatra'
 require './lib/empleado'
 require './lib/contrato_mensual'
 require './lib/contrato_quincenal'
-require './manager/manager_empleados'
+require './lib/contrato_factory'
+require './lib/salario_factory'
+require './lib/clasificador_por_hora'
+require './lib/clasificador_salario_fijo'
+require './repositorios/repositorio_empleado'
 
-
-$gestor_empleados = Empleados.new
-$empleado_vacio = Empleado.new('', '', '', Date.new(2012,1,1), ContratoMensual.new)
+$repositorio_empleado = RepositorioEmpleado.new
 
 get "/" do
-	@empleados = $gestor_empleados.obtener_todos
+	@empleados = $repositorio_empleado.obtener_todos
 	erb :"index"
 end
 
 get "/empleados/nuevo" do
-	#@empleado = Empleado.new('', '', '', Date.new(2012,1,1), ContratoMensual.new, '', '', '')
 	erb :"nuevo_empleado"
 end
 
 post "/empleados/crear_empleado" do
-	nuevoEmpleado = $empleado_vacio.crear_empleado(params[:empleado_ci], 
+	nuevoEmpleado = Empleado.crear_empleado(params[:empleado_ci], 
 								 params[:empleado_nombre], 
 								 params[:empleado_apellido], 
 								 params[:fecha_de_contrato], 
@@ -28,16 +29,18 @@ post "/empleados/crear_empleado" do
 								 params[:tipo_de_contrato], 
 								 params[:empleado_tipo_salario])
 								 
-	$gestor_empleados.adicionar(nuevoEmpleado)
-  	@empleados = $gestor_empleados.obtener_todos
+	$repositorio_empleado.adicionar(nuevoEmpleado)
+  	@empleados = $repositorio_empleado.obtener_todos
   	erb :"index"
 end
 
+get "/empleados/ver/:ci" do
+	@empleado = $repositorio_empleado.buscar_por_ci(params[:ci])
+	erb :"ver_empleado"
+end
+
 post "/empleados/actualizar" do
-
-
   @ci_empleado_antiguo = params[:empleado_ci_antiguo] 	
-
   	if (params[:tipo_de_contrato]=="Mensual") then 
 		tipo_contrato_establecido = ContratoMensual.new
 	else
@@ -61,9 +64,7 @@ post "/empleados/actualizar" do
 end
 
 get "/empleados/modificar/:ci" do
-	@ci = params[:ci]
-	@emp = Empleado.new('', '', '', Date.new(2012,1,1), ContratoMensual.new)
-	@empleado = @emp.buscar_empleado_por_ci(@ci,em)
+	@empleado = $repositorio_empleado.buscar_por_ci(params[:ci])
 	erb :"modificar_empleado"
 end
 
@@ -75,7 +76,4 @@ get "/empleados/eliminar/:ci" do
 	erb :"index"
 end
 
-get "/empleados/ver/:ci" do
-	@empleado = $gestor_empleados.buscar_por_ci(params[:ci])
-	erb :"ver_empleado"
-end
+

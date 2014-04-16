@@ -51,3 +51,38 @@ agregar a git tu codigo
 
 
 
+Gnerar Cheque
+
+------------------------------
+
+Generar el cheke para los empleados q corresponde...!! 
+
+monto y la emision
+
+repositorio -> 
+                repositorios.rb esto son carpetas qu se ceran --> la responzabilidad: buscar empleado; obtener lista empleado; buscar empleado; agregar empleado, borrar empleado, generar cheques??? --> aqui entra lo referente a los empleado con el repositorio. Gestionar todo lo que sea almacenar
+                obtener, generar almacenar, buscar, etc.
+
+                def generar_cheques --> vist
+                    cheques = []
+                    @empleados.each do [empleados]
+                        cheque = GenerardorCheque.new(Date.today).ejecutar(empleado)
+                        if cheque!=nill
+                            cheques.push(cheque)
+                        end
+                    end
+                    return cheques
+                end
+
+                renombrar la variables -> $gestor_empleados = Empleados.new --> a --> $repositorio_empleados = Repositorio.new
+
+                vista generador de cheques -> 
+
+                Nombre ...
+                ci ...
+                monto ...
+                fecha de emision ....
+
+                Empleados a los que se les paga... Mensaul y Quincena
+
+                ahora queremos otro que se cree trimestralmente.

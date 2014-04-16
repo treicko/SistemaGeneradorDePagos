@@ -1,15 +1,16 @@
 require('date')
 
 class Empleado
+  #attr_accessor :clasificador_salario
+  attr_accessor :clasificador_salario
   attr_reader :nombre, :apellido, :ci, :fecha_inicio_contrato, :salario
-  attr_writer :clasificador_salario
+  
 
   def initialize(ci, nombre, apellido, fecha_inicio_contrato,clasificador_contrato)
     @ci = ci
     @nombre = nombre
     @apellido = apellido
     @fecha_inicio_contrato = fecha_inicio_contrato
-
     @descuento_fijo_por_sindicato = 0
     @tarjetas_de_servicio = Array.new
     @descuento_por_servicios = 0
@@ -17,11 +18,9 @@ class Empleado
   end
 
   def self.crear_empleado(ci, nombre, apellido, fecha_inicio_contrato, salario, tipo_contrato, tipo_salario)
-    factoryContrato = ContratoFactory.new
-    factorySalario = SalarioFactory.new
-    contrato = factoryContrato.crear_contrato(tipo_contrato)
-    salario = factorySalario.crear_clasificador_salario(tipo_salario, salario, fecha_inicio_contrato)
+    contrato = ContratoFactory.new.crear_contrato(tipo_contrato)
     empleado = Empleado.new(ci,nombre, apellido, fecha_inicio_contrato, contrato)
+    salario = SalarioFactory.new.crear_clasificador_salario(tipo_salario, salario, fecha_inicio_contrato)
     empleado.clasificador_salario = salario
     return empleado
   end
@@ -103,6 +102,10 @@ class Empleado
     else
       return false
     end
+  end
+
+  def devolver_salario
+    @clasificador_salario.devolver_salario
   end
 
 end

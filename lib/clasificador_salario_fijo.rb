@@ -14,6 +14,16 @@ class ClasificadorSalarioFijo
     end
   end
 
+  def devolver_salario
+    @salario
+  end
+
+   def salario_fijo?
+    true
+  end
+
+  # ------------------------- Metodos Privados ------------------------- #
+
   private
   def calcular_salario_prorrateado(fecha_ejecucion)
     dias_trabajados = calcular_dias_trabajados_hasta(fecha_ejecucion)
@@ -34,8 +44,6 @@ class ClasificadorSalarioFijo
         @fecha_inicio_contrato.year==fecha_ejecucion.year
   end
 
-  def salario_fijo?
-    true
-  end
+ 
 
 end

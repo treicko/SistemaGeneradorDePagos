@@ -1,9 +1,9 @@
 class ClasificadorPorHora
-  attr_writer :monto_por_hora
+  attr_writer :salario
 
   def initialize(monto_por_hora)
     @tarjetas_de_tiempo = Array.new
-    @monto_por_hora = monto_por_hora
+    @salario = monto_por_hora
   end
 
   def calcular_salario(fecha_ejecucion)
@@ -18,6 +18,10 @@ class ClasificadorPorHora
 
   def salario_fijo?
     false
+  end
+
+  def devolver_salario
+    @salario
   end
 
 end

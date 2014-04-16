@@ -1,7 +1,8 @@
-class Empleados
+class RepositorioEmpleado
   def initialize
-    @empleados = [Empleado.new('3343', 'Juan', 'Perez', Date.new(2012,2,1),ContratoQuincenal.new), 
-  		            Empleado.new('1234', 'Daniel', 'Mendez', Date.new(2012,3,1),ContratoMensual.new)]
+    @empleados= Array.new
+    @empleados.push(Empleado.crear_empleado('3343', 'Juan', 'Perez Asturias', Date.new(2014,2,1), 3000, 'Mensual', 'Salario Fijo'))
+    @empleados.push(Empleado.crear_empleado('1234', 'Daniel', 'Mendez Machado', Date.new(2014,2,1), 1300, 'Quincenal', 'Salario Hora'))
   end
   
   def obtener_todos
@@ -10,7 +11,8 @@ class Empleados
   
   def adicionar(empleado)
     #@empleados.push(empleado)
-    @empleados << empleado
+    #@empleados << empleado
+    @empleados.push(empleado)
   end
   
   def buscar_por_ci(ci)
