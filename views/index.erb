@@ -1,26 +1,50 @@
-<div class="page-header">
-  <h1 id="navbar">Lista de empleados</h1>
+<div class="container">
+
+	<div class="page-header text-center">
+	  <h2 id="navbar">Lista De Empleados</h2>
+	</div>
+
+	<div class="bs-component">
+		<p class="bs-component">
+			<a href="/nuevo_empleado" class="btn btn-success text-right">Nuevo Empleado</a>
+		</p>
+
+		<p class="bs-component">
+			<table class="table table-bordered table-striped">
+				<tr>
+				  <th>Ci</th>
+				  <th>Nombre</th>
+				  <th>Apellido</th>
+				  <th>Tipo De Contrato</th>
+				  <th>Tipo De Salario</th>
+				  <th>Tarjeta De Tiempo</th>
+				  <th></th>
+				  <th></th>
+				  <th></th>
+				</tr>
+
+				<% @empleados.each do |empleado| %>
+				  <tr>
+				    <td><%= empleado.ci %></td>
+				    <td><%= empleado.nombre %></td>
+				    <td><%= empleado.apellido %></td>
+				    <td><%= empleado.tipo_contrato %></td>
+				    <td><%= empleado.tipo_salario %></td>
+				    <td>
+				    	<a style="<%= 'display:none;' unless empleado.esSalarioPorHora? %>" class="btn btn-primary" href="/agregar_tarjeta_tiempo/<%= empleado.ci %>" ><span class="glyphicon glyphicon-dashboard"></span> Agregar</a>
+					</td>
+				    <td>
+				    	<a title="Ver Empleado" href="/empleados/ver/<%= empleado.ci %>"><span class="glyphicon glyphicon-eye-open"></span></a>
+				   	</td>
+				    <td>
+				    	<a title="Editar Empleado" href="/empleados/modificar/<%= empleado.ci %>"><span class="glyphicon glyphicon-edit"></span></a>
+				    </td>
+				    <td>
+						<a  title="Eliminar Empleado" href="/empleados/eliminar/<%= empleado.ci %>"><span class="glyphicon glyphicon-trash"></span></a>
+				    </td>
+				  </tr>
+				<% end %>
+			</table>
+		</p>
+	</div>
 </div>
-
-<table class="table table-bordered table-striped">
-	<tr>
-	  <th class="col-xs-4">Ci</th>
-	  <th class="col-xs-4">Nombre</th>
-	  <th class="col-xs-4">Apellido</th>
-	  <th class="col-xs-4"></th>
-	  <th class="col-xs-4"></th>
-	  <th class="col-xs-4"></th>
-	</tr>
-
-	<% @empleados.each do |empleado| %>
-	  <tr>
-	    <td><%= empleado.ci %></td>
-	    <td><%= empleado.nombre %></td>
-	    <td><%= empleado.apellido %></td>
-	    <td><a href="/empleados/ver/<%= empleado.ci %>">Ver</a></td>
-	    <td><a href="/empleados/modificar/<%= empleado.ci %>">Modificar</a></td>
-	    <td><a href="/empleados/eliminar/<%= empleado.ci %>">Eliminar</a></td>
-	  </tr>
-	<% end %>
-
-</table>

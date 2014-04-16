@@ -16,12 +16,16 @@ class ClasificadorPorHora
     @tarjetas_de_tiempo.push(tarjeta_de_tiempo)
   end
 
-  def salario_fijo?
-    false
-  end
-
   def devolver_salario
     @salario
+  end
+
+  def tipo_salario
+    "Salario Por Hora"
+  end
+
+  def esSalarioPorHora?
+    true
   end
 
 end

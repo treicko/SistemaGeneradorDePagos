@@ -1,9 +1,10 @@
 require('date')
 require 'sinatra'
 require './lib/empleado'
+require './lib/contrato_factory'
 require './lib/contrato_mensual'
 require './lib/contrato_quincenal'
-require './lib/contrato_factory'
+require './lib/contrato_trimestral'
 require './lib/salario_factory'
 require './lib/clasificador_por_hora'
 require './lib/clasificador_salario_fijo'

@@ -18,8 +18,12 @@ class ClasificadorSalarioFijo
     @salario
   end
 
-   def salario_fijo?
-    true
+  def tipo_salario
+    "Salario Fijo"
+  end
+
+  def esSalarioPorHora?
+    false
   end
 
   # ------------------------- Metodos Privados ------------------------- #

@@ -4,12 +4,8 @@ class ContratoQuincenal
     fecha_de_ejecucion.strftime("%A") == "Friday"
   end
 
-  def contrato_mensual?
-    false
-  end
-
-  def obtener_descripcion
-  	return "Soy contrato quincenal"
+  def tipo_contrato
+  	"Contrato Quincenal"
   end
 
 end

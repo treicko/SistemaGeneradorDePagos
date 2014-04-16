@@ -2,8 +2,7 @@ require('date')
 
 class Empleado
   #attr_accessor :clasificador_salario
-  attr_accessor :clasificador_salario
-  attr_reader :nombre, :apellido, :ci, :fecha_inicio_contrato, :salario
+  attr_accessor :clasificador_salario, :nombre, :apellido, :ci, :fecha_inicio_contrato, :salario, :clasificador_contrato
   
 
   def initialize(ci, nombre, apellido, fecha_inicio_contrato,clasificador_contrato)
@@ -106,6 +105,18 @@ class Empleado
 
   def devolver_salario
     @clasificador_salario.devolver_salario
+  end
+
+  def tipo_contrato
+    @clasificador_contrato.tipo_contrato
+  end
+
+  def tipo_salario
+    @clasificador_salario.tipo_salario
+  end
+
+  def esSalarioPorHora?
+    @clasificador_salario.esSalarioPorHora?
   end
 
 end

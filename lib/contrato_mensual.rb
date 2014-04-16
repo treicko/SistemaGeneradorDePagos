@@ -4,12 +4,8 @@ class ContratoMensual
     return (fecha_de_ejecucion.next_day.day==1)
   end
 
-  def contrato_mensual?
-    true
-  end
-
-  def obtener_descripcion
-  	"Soy contrato mensual"
+  def tipo_contrato
+  	"Contrato Mensual"
   end
 
 end
